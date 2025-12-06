@@ -1,4 +1,4 @@
-# TM-Emulator-Semester-Project
+# Turing-Emulator
 
 This proposal is for a **Turing Machine (TM) Emulator for Arithmetic Operations**, developed for the **Theory of Automata and Formal Languages (TAFL)** course by Muhammad Mahad and Abdul Moiz, under the instruction of Dr. Sohail Iqbal.
 
