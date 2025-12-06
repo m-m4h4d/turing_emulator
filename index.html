@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turing Machine Emulator - Final Project</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
+        .glass-panel { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <!-- Hero Section -->
+    <header class="bg-slate-900 text-white pt-20 pb-24 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
+            <!-- Binary Pattern Background -->
+            <div class="text-xs break-all leading-3 font-mono">
+                010101010101011100101010101010100101010101010101010101010101
+                110101010101011100101010101010100101010101010101010101010101
+                001010101010101100101010101010100101010101010101010101010101
+            </div>
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <div class="inline-block bg-blue-600 text-blue-100 text-xs font-bold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+                Final Project &bull; Fall 2025
+            </div>
+            <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
+                Turing Machine Emulator
+            </h1>
+            <p class="text-xl md:text-2xl text-slate-400 font-light mb-8 max-w-2xl mx-auto">
+                For Arithmetic Operations (Unary & Binary)
+            </p>
+            
+            <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
+                <!-- Replace '#' with your actual emulator link if hosted separately, e.g., /emulator -->
+                <a href="https://github.com/m-m4h4d/turing_emulator" target="_blank" 
+                   class="flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-slate-200 transition-all shadow-lg hover:shadow-xl">
+                    <i data-lucide="github" class="w-5 h-5"></i> GitHub Repository
+                </a>
+                <a href="https://youtu.be/AqTDXRRxPcs" target="_blank" 
+                   class="flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
+                    <i data-lucide="youtube" class="w-5 h-5"></i> Watch Demo Video
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Info Bar -->
+    <div class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
+        <div class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center text-sm">
+            <div class="flex gap-8">
+                <span class="font-semibold text-slate-500">Course: <span class="text-slate-900">CS-352 TAFL</span></span>
+                <span class="font-semibold text-slate-500">Instructor: <span class="text-slate-900">Dr. Sohail Iqbal</span></span>
+            </div>
+            <div class="flex gap-4 text-slate-600">
+                <span>Muhammad Mahad (408576)</span>
+                <span>&bull;</span>
+                <span>Abdul Moiz (375299)</span>
+            </div>
+        </div>
+    </div>
+
+    <main class="container mx-auto px-6 py-16 max-w-5xl space-y-20">
+
+        <!-- 1. Overview Section -->
+        <section id="overview" class="grid md:grid-cols-2 gap-12 items-start">
+            <div>
+                <h2 class="text-3xl font-bold mb-6 flex items-center gap-3">
+                    <i data-lucide="target" class="text-blue-600"></i> Project Goal
+                </h2>
+                <div class="prose text-slate-600 leading-relaxed">
+                    <p class="mb-4">
+                        The Turing Machine (TM) is the foundation of modern computation. While most simulators focus on simple string acceptance (like palindromes), they fail to demonstrate how complex logic stems from simple transitions.
+                    </p>
+                    <p class="font-medium text-slate-800">
+                        Our goal was to bridge this gap by creating an interactive emulator that visually demonstrates TM-based arithmetic (Addition, Subtraction, Multiplication) step-by-step.
+                    </p>
+                </div>
+            </div>
+            
+            <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100">
+                <h3 class="font-bold text-slate-900 mb-4 border-b pb-2">Key Features</h3>
+                <ul class="space-y-3">
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                        <span class="text-slate-600"><strong>Dual Mode:</strong> Supports both Unary and Binary systems.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                        <span class="text-slate-600"><strong>Visual Tape:</strong> Real-time head tracking and tape expansion.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                        <span class="text-slate-600"><strong>Transition Logs:</strong> Explains <em>why</em> a move occurred in plain English.</span>
+                    </li>
+                    <li class="flex items-start gap-3">
+                        <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
+                        <span class="text-slate-600"><strong>Python Core:</strong> Logic implemented using Python generators for efficiency.</span>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2. Methodology Verification -->
+        <section id="methodology" class="bg-white p-8 rounded-2xl shadow-sm border border-slate-200">
+            <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
+                <i data-lucide="clipboard-check" class="text-blue-600"></i> Methodology Verification
+            </h2>
+            
+            <div class="overflow-x-auto">
+                <table class="w-full text-left border-collapse">
+                    <thead>
+                        <tr class="border-b-2 border-slate-100 text-slate-500 text-sm uppercase tracking-wider">
+                            <th class="py-3 px-4">Phase</th>
+                            <th class="py-3 px-4">Step</th>
+                            <th class="py-3 px-4">Status</th>
+                            <th class="py-3 px-4 text-right">Completion</th>
+                        </tr>
+                    </thead>
+                    <tbody class="text-slate-700 font-medium">
+                        <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
+                            <td class="py-4 px-4 text-slate-400">01</td>
+                            <td class="py-4 px-4">Problem Definition</td>
+                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4 text-right">100%</td>
+                        </tr>
+                        <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
+                            <td class="py-4 px-4 text-slate-400">02</td>
+                            <td class="py-4 px-4">Design (Tape/Head/State)</td>
+                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4 text-right">100%</td>
+                        </tr>
+                        <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
+                            <td class="py-4 px-4 text-slate-400">03</td>
+                            <td class="py-4 px-4">Implementation (Python Logic)</td>
+                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4 text-right">100%</td>
+                        </tr>
+                        <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
+                            <td class="py-4 px-4 text-slate-400">04</td>
+                            <td class="py-4 px-4">Visualization (GUI/CLI)</td>
+                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4 text-right">100%</td>
+                        </tr>
+                        <tr class="hover:bg-slate-50 transition bg-blue-50/50">
+                            <td class="py-4 px-4 text-blue-400">05</td>
+                            <td class="py-4 px-4 text-blue-900">Testing & QA</td>
+                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-100 px-2 py-1 rounded-md text-xs font-bold">COMPLETED</span></td>
+                            <td class="py-4 px-4 text-right font-bold text-blue-700">100%</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <p class="mt-6 text-sm text-slate-500 italic">
+                *The testing framework was the final implemented step, completing the methodology requirements.
+            </p>
+        </section>
+
+        <!-- 3. Testing Summary -->
+        <section id="testing" class="grid md:grid-cols-3 gap-6">
+            <div class="md:col-span-3">
+                <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
+                    <i data-lucide="flask-conical" class="text-blue-600"></i> Testing Suite
+                </h2>
+                <p class="text-slate-600 mb-6">A comprehensive test suite was developed to systematically evaluate transition counts, halting accuracy, and edge cases.</p>
+            </div>
+
+            <!-- Card 1 -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="bg-blue-100 w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-blue-600">
+                    <i data-lucide="calculator"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Operation Correctness</h3>
+                <p class="text-sm text-slate-600">
+                    Verified mathematical accuracy for Add, Sub, and Multiply across both Unary and Binary systems.
+                </p>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="bg-purple-100 w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-purple-600">
+                    <i data-lucide="stop-circle"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Halting Accuracy</h3>
+                <p class="text-sm text-slate-600">
+                    Ensures the machine halts correctly on completion and respects the <code>MAX_STEPS</code> safety limit to prevent infinite loops.
+                </p>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-sm hover:shadow-md transition">
+                <div class="bg-orange-100 w-10 h-10 rounded-lg flex items-center justify-center mb-4 text-orange-600">
+                    <i data-lucide="alert-triangle"></i>
+                </div>
+                <h3 class="font-bold text-slate-900 mb-2">Edge Cases</h3>
+                <p class="text-sm text-slate-600">
+                    Tested boundaries including Zero operands, Single-bit inputs, and Negative result clamping.
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="mb-4">&copy; 2025 Turing Machine Emulator Project.</p>
+            <p class="text-sm text-slate-600">
+                Department of Computer Science &bull; NUST Islamabad
+            </p>
+        </div>
+    </footer>
+
+    <!-- Initialize Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
