@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,16 +11,25 @@
     <!-- Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .glass-panel { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(10px); }
+        body {
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+        }
     </style>
 </head>
+
 <body class="bg-slate-50 text-slate-800">
 
     <!-- Hero Section -->
-    <header class="bg-slate-900 text-white pt-20 pb-24 relative overflow-hidden">        
+    <header class="bg-slate-900 text-white pt-20 pb-24 relative overflow-hidden">
         <div class="container mx-auto px-6 relative z-10 text-center">
-            <div class="inline-block bg-blue-600 text-blue-100 text-xs font-bold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
+            <div
+                class="inline-block bg-blue-600 text-blue-100 text-xs font-bold px-3 py-1 rounded-full mb-6 tracking-wide uppercase">
                 Semester Project &bull; Fall 2025
             </div>
             <h1 class="text-4xl md:text-6xl font-extrabold mb-4 tracking-tight">
@@ -28,16 +38,19 @@
             <p class="text-xl md:text-2xl text-slate-400 font-light mb-8 max-w-2xl mx-auto">
                 For Arithmetic Operations (Unary & Binary)
             </p>
-            
+
             <div class="flex flex-col md:flex-row justify-center gap-4 mt-8">
-                <!-- Replace '#' with your actual emulator link if hosted separately, e.g., /emulator -->
-                <a href="https://github.com/m-m4h4d/turing_emulator" target="_blank" 
-                   class="flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-slate-200 transition-all shadow-lg hover:shadow-xl">
-                    <i data-lucide="github" class="w-5 h-5"></i> GitHub Repository
+                <a href="https://tm-emulator-semester-project.vercel.app/" target="_blank"
+                    class="flex items-center justify-center gap-2 bg-blue-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-blue-700 transition-all shadow-lg hover:shadow-xl">
+                    <i data-lucide="land-plot" class="w-5 h-5"></i> Open Emulator
                 </a>
-                <a href="https://youtu.be/AqTDXRRxPcs" target="_blank" 
-                   class="flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
-                    <i data-lucide="youtube" class="w-5 h-5"></i> Watch Demo Video
+                <a href="https://github.com/m-m4h4d/turing_emulator" target="_blank"
+                    class="flex items-center justify-center gap-2 bg-white text-slate-900 px-8 py-3 rounded-lg font-bold hover:bg-slate-200 transition-all shadow-lg hover:shadow-xl">
+                    <i data-lucide="code" class="w-5 h-5"></i> GitHub Repository
+                </a>
+                <a href="https://youtu.be/AqTDXRRxPcs" target="_blank"
+                    class="flex items-center justify-center gap-2 bg-red-600 text-white px-8 py-3 rounded-lg font-bold hover:bg-red-700 transition-all shadow-lg hover:shadow-xl">
+                    <i data-lucide="play" class="w-5 h-5"></i> Watch Demo Video
                 </a>
             </div>
         </div>
@@ -47,8 +60,10 @@
     <div class="bg-white border-b border-slate-200 shadow-sm sticky top-0 z-50">
         <div class="container mx-auto px-6 py-4 flex flex-wrap justify-between items-center text-sm">
             <div class="flex gap-8">
-                <span class="font-semibold text-slate-500">Course: <span class="text-slate-900">Theory of Automata & Formal Languages</span></span>
-                <span class="font-semibold text-slate-500">Instructor: <span class="text-slate-900">Dr. Sohail Iqbal</span></span>
+                <span class="font-semibold text-slate-500">Course: <span class="text-slate-900">Theory of Automata &
+                        Formal Languages</span></span>
+                <span class="font-semibold text-slate-500">Instructor: <span class="text-slate-900">Dr. Sohail
+                        Iqbal</span></span>
             </div>
             <div class="flex gap-4 text-slate-600">
                 <span>Muhammad Mahad (408576)</span>
@@ -68,32 +83,39 @@
                 </h2>
                 <div class="prose text-slate-600 leading-relaxed">
                     <p class="mb-4">
-                        The Turing Machine (TM) is the foundation of modern computation. While most simulators focus on simple string acceptance (like palindromes), they fail to demonstrate how complex logic stems from simple transitions.
+                        The Turing Machine (TM) is the foundation of modern computation. While most simulators focus on
+                        simple string acceptance (like palindromes), they fail to demonstrate how complex logic stems
+                        from simple transitions.
                     </p>
                     <p class="font-medium text-slate-800">
-                        Our goal was to bridge this gap by creating an interactive emulator that visually demonstrates TM-based arithmetic (Addition, Subtraction, Multiplication) step-by-step.
+                        Our goal was to bridge this gap by creating an interactive emulator that visually demonstrates
+                        TM-based arithmetic (Addition, Subtraction, Multiplication) step-by-step.
                     </p>
                 </div>
             </div>
-            
+
             <div class="bg-white p-6 rounded-xl shadow-lg border border-slate-100">
                 <h3 class="font-bold text-slate-900 mb-4 border-b pb-2">Key Features</h3>
                 <ul class="space-y-3">
                     <li class="flex items-start gap-3">
                         <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
-                        <span class="text-slate-600"><strong>Dual Mode:</strong> Supports both Unary and Binary systems.</span>
+                        <span class="text-slate-600"><strong>Dual Mode:</strong> Supports both Unary and Binary
+                            systems.</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
-                        <span class="text-slate-600"><strong>Visual Tape:</strong> Real-time head tracking and tape expansion.</span>
+                        <span class="text-slate-600"><strong>Visual Tape:</strong> Real-time head tracking and tape
+                            expansion.</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
-                        <span class="text-slate-600"><strong>Transition Logs:</strong> Explains <em>why</em> a move occurred in plain English.</span>
+                        <span class="text-slate-600"><strong>Transition Logs:</strong> Explains <em>why</em> a move
+                            occurred in plain English.</span>
                     </li>
                     <li class="flex items-start gap-3">
                         <i data-lucide="check-circle" class="w-5 h-5 text-green-500 mt-0.5"></i>
-                        <span class="text-slate-600"><strong>Python Core:</strong> Logic implemented using Python generators for efficiency.</span>
+                        <span class="text-slate-600"><strong>Python Core:</strong> Logic implemented using Python
+                            generators for efficiency.</span>
                     </li>
                 </ul>
             </div>
@@ -104,7 +126,7 @@
             <h2 class="text-3xl font-bold mb-8 flex items-center gap-3">
                 <i data-lucide="clipboard-check" class="text-blue-600"></i> Methodology Verification
             </h2>
-            
+
             <div class="overflow-x-auto">
                 <table class="w-full text-left border-collapse">
                     <thead>
@@ -119,31 +141,41 @@
                         <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
                             <td class="py-4 px-4 text-slate-400">01</td>
                             <td class="py-4 px-4">Problem Definition</td>
-                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4"><span
+                                    class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY
+                                    IMPLEMENTED</span></td>
                             <td class="py-4 px-4 text-right">100%</td>
                         </tr>
                         <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
                             <td class="py-4 px-4 text-slate-400">02</td>
                             <td class="py-4 px-4">Design (Tape/Head/State)</td>
-                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4"><span
+                                    class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY
+                                    IMPLEMENTED</span></td>
                             <td class="py-4 px-4 text-right">100%</td>
                         </tr>
                         <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
                             <td class="py-4 px-4 text-slate-400">03</td>
                             <td class="py-4 px-4">Implementation (Python Logic)</td>
-                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4"><span
+                                    class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY
+                                    IMPLEMENTED</span></td>
                             <td class="py-4 px-4 text-right">100%</td>
                         </tr>
                         <tr class="border-b border-slate-50 hover:bg-slate-50 transition">
                             <td class="py-4 px-4 text-slate-400">04</td>
                             <td class="py-4 px-4">Visualization (GUI/CLI)</td>
-                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY IMPLEMENTED</span></td>
+                            <td class="py-4 px-4"><span
+                                    class="inline-flex items-center gap-1 text-green-600 bg-green-50 px-2 py-1 rounded-md text-xs font-bold">FULLY
+                                    IMPLEMENTED</span></td>
                             <td class="py-4 px-4 text-right">100%</td>
                         </tr>
                         <tr class="hover:bg-slate-50 transition bg-blue-50/50">
                             <td class="py-4 px-4 text-blue-400">05</td>
                             <td class="py-4 px-4 text-blue-900">Testing & QA</td>
-                            <td class="py-4 px-4"><span class="inline-flex items-center gap-1 text-green-600 bg-green-100 px-2 py-1 rounded-md text-xs font-bold">COMPLETED</span></td>
+                            <td class="py-4 px-4"><span
+                                    class="inline-flex items-center gap-1 text-green-600 bg-green-100 px-2 py-1 rounded-md text-xs font-bold">COMPLETED</span>
+                            </td>
                             <td class="py-4 px-4 text-right font-bold text-blue-700">100%</td>
                         </tr>
                     </tbody>
@@ -160,7 +192,9 @@
                 <h2 class="text-3xl font-bold mb-2 flex items-center gap-3">
                     <i data-lucide="flask-conical" class="text-blue-600"></i> Testing Suite
                 </h2>
-                <p class="text-slate-600 mb-6">A comprehensive test suite was developed to systematically evaluate transition counts, halting accuracy, and edge cases.</p>
+                <p class="text-slate-600 mb-6">A comprehensive test suite was developed to systematically evaluate
+                    transition counts, halting accuracy, and edge cases. Use the release in GitHub link above to run
+                    the accurate tests.</p>
             </div>
 
             <!-- Card 1 -->
@@ -181,7 +215,8 @@
                 </div>
                 <h3 class="font-bold text-slate-900 mb-2">Halting Accuracy</h3>
                 <p class="text-sm text-slate-600">
-                    Ensures the machine halts correctly on completion and respects the <code>MAX_STEPS</code> safety limit to prevent infinite loops.
+                    Ensures the machine halts correctly on completion and respects the <code>MAX_STEPS</code> safety
+                    limit to prevent infinite loops.
                 </p>
             </div>
 
@@ -204,7 +239,8 @@
         <div class="container mx-auto px-6 text-center">
             <p class="mb-4">&copy; 2025 Turing Machine Emulator Project.</p>
             <p class="text-sm text-slate-600">
-                School of Electrical Engineering & Computer Science (SEECS) &bull; National University of Sciences & Technology (NUST)
+                School of Electrical Engineering & Computer Science (SEECS) &bull; National University of Sciences &
+                Technology (NUST)
             </p>
         </div>
     </footer>
@@ -214,4 +250,5 @@
         lucide.createIcons();
     </script>
 </body>
+
 </html>
