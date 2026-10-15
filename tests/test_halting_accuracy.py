@@ -48,7 +48,7 @@ class TestHaltingAccuracy(unittest.TestCase):
 
     def test_halts_on_max_steps(self):
         """Verify machine halts when max_steps is reached."""
-        tape = build_initial_tape(1, 1, 'unary')
+        tape = build_initial_tape(10, 5, 'unary')  # needs more steps than the limit
         gen = get_generator_for('add', 'unary', tape)
         sim = TMSimulator(tape, gen, max_steps=5)  # Very low limit
         

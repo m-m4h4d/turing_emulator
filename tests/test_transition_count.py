@@ -123,7 +123,7 @@ class TestTransitionCount(unittest.TestCase):
 
     def test_transition_count_max_steps_limit(self):
         """Test that transition count respects max_steps limit."""
-        tape = build_initial_tape(1, 1, 'unary')
+        tape = build_initial_tape(10, 5, 'unary')  # needs more steps than the limit
         gen = get_generator_for('add', 'unary', tape)
         sim = TMSimulator(tape, gen, max_steps=10)  # Very low limit
         

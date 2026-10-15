@@ -2,9 +2,13 @@
 Test runner script to execute all test suites.
 Provides a comprehensive evaluation of transition count and halting accuracy.
 """
+import os
 import unittest
 import sys
 from io import StringIO
+
+# Allow `python tests/run_all_tests.py` from the project root as well as `python -m tests.run_all_tests`.
+sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 # Import all test modules
 from tests.test_transition_count import TestTransitionCount
@@ -12,6 +16,7 @@ from tests.test_halting_accuracy import TestHaltingAccuracy
 from tests.test_operation_correctness import TestOperationCorrectness
 from tests.test_edge_cases import TestEdgeCases
 from tests.test_integration import TestIntegration
+from tests.test_machines import TestMachines
 
 
 def run_all_tests(verbose=True):
@@ -26,6 +31,7 @@ def run_all_tests(verbose=True):
     suite.addTests(loader.loadTestsFromTestCase(TestOperationCorrectness))
     suite.addTests(loader.loadTestsFromTestCase(TestEdgeCases))
     suite.addTests(loader.loadTestsFromTestCase(TestIntegration))
+    suite.addTests(loader.loadTestsFromTestCase(TestMachines))
     
     # Run tests
     stream = StringIO() if not verbose else sys.stderr
@@ -61,7 +67,7 @@ def print_summary(result):
 
 if __name__ == '__main__':
     print("Running comprehensive test suite for Turing Machine Emulator...")
-    print("Testing: Transition Count, Halting Accuracy, Operation Correctness, Edge Cases, Integration")
+    print("Testing: Transition Count, Halting Accuracy, Operation Correctness, Edge Cases, Integration, Machines")
     print()
     
     result = run_all_tests(verbose=True)

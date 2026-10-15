@@ -3,15 +3,15 @@ import time
 from tm.tape import Tape
 from typing import Generator, Optional, Tuple
 from config import MAX_STEPS
+from tm.machines import HALT
 
 # transition type: (state, read, write, move, next_state, note)
 Transition = Tuple[str, Optional[str], Optional[str], Optional[str], Optional[str], Optional[str]]
 
 class TMSimulator:
     """
-    Simulator running a generator that yields transitions.
-    The generator is responsible for manipulating the Tape directly (writes/moves).
-    Each yielded transition is informative for logging / UI.
+    Steps a running machine (a generator from tm.machines.run) and counts transitions.
+    The generator applies each rule to the Tape and then yields it for logging / UI.
     """
     def __init__(self, tape: Tape, gen_steps: Generator[Transition, None, None], max_steps: int = MAX_STEPS):
         self.tape = tape
@@ -35,6 +35,9 @@ class TMSimulator:
             return ('HALT', None, None, None, None, 'halt')
         self.step_count += 1
         self.last_transition = trans
+        # next_state is HALT on acceptance, None when the machine is stuck.
+        if trans[4] in (HALT, None):
+            self.halted = True
         return trans
 
     def run(self, callback=None, delay: float = 0.02):
