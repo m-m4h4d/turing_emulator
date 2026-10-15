@@ -1,8 +1,8 @@
 # config.py
 # Global configuration / defaults used across the project.
 
-BLANK = '_'          # blank symbol on tape
-UNARY_SEP = '0'      # unary separator between a and b
-BINARY_SEP = '#'     # binary separator (distinct from '0' digit)
+# Tape symbols are defined with the machines: blank '_', unary separator '0',
+# binary separator '#' (distinct from the '0' digit).
+from tm.machines import BLANK, UNARY_SEP, BINARY_SEP
 MAX_STEPS = 100_000
 INPUT_LIMIT = 200    # max a,b (in magnitude/length) by default

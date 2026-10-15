@@ -25,13 +25,8 @@
 
 **Files:**
 
-- `operations/unary_add.py`
-- `operations/unary_subtract.py`
-- `operations/unary_multiply.py`
-- `operations/binary_add.py`
-- `operations/binary_subtract.py`
-- `operations/binary_multiply.py`
-- `operations/__init__.py` (routes operations)
+- `tm/machines.py` - one transition table per operation: `unary_add`, `unary_subtract`, `unary_multiply`, `binary_add`, `binary_subtract`, `binary_multiply`
+- `operations/__init__.py` (builds input tapes and routes operations to their machines)
 
 **Conclusion:** All three basic arithmetic operations are identified and implemented for both unary and binary numeral systems.
 
@@ -59,10 +54,10 @@
 
 **State Structure:**
 
-- States defined in operation generators (e.g., 'q0', 'q1', 'q_accept', 'scan_right', 'process', etc.)
-- State transitions managed through generator yields
-- `tm/transition.py` - `Transition` class for transition rules
-- `tm/simulator.py` - `TMSimulator` class manages state execution
+- Each operation is a `Machine` in `tm/machines.py`: a start state and a transition table `δ(state, read) → (write, move, next_state)`
+- `q_accept` is the halting (accept) state; a missing rule means the machine is stuck
+- `python main.py --table --op multiply --numeral binary` prints any machine's full table
+- `tm/simulator.py` - `TMSimulator` class steps a machine and counts transitions
 
 **Conclusion:** Complete tape, head, and state structure is properly designed and implemented.
 
@@ -84,18 +79,19 @@
 
 **TM Logic Implementation:**
 
-- All operations implemented as Python generators
-- Each generator yields transitions: `(state, read, write, move, next_state, note)`
-- Generators directly manipulate the tape (write/move operations)
-- Proper state machine logic in each operation
+- All operations are transition tables; one interpreter, `tm.machines.run`, executes any of them
+- The tape only changes by applying a rule: read the symbol under the head, look up `δ(state, symbol)`, write, move, change state
+- Each applied rule is yielded for the GUI/CLI log as `(state, read, write, move, next_state, note)`
 
-**Operation Examples:**
+**Operation Algorithms:**
 
-- `unary_add_generator()` - Implements unary addition algorithm
-- `binary_add_generator()` - Implements binary addition with carry logic
-- Similar generators for subtract and multiply operations
+- Unary add: turn the separator into a 1, erase the last 1
+- Unary subtract (monus): repeatedly erase the last 1 of b and the first 1 of a
+- Unary multiply: for each 1 of b, copy a one 1 at a time to the right of a `=` marker
+- Binary add / subtract: ripple carry / borrow from the lowest bit, marking finished bits `O`/`I`
+- Binary multiply: shift-and-add; for each 1 bit of b, add a into the product, then fix the lowest product bit
 
-**Conclusion:** TM logic is fully implemented in Python using generator-based state machines.
+**Conclusion:** TM logic is implemented in Python as explicit transition tables run by a single interpreter.
 
 ---
 
@@ -160,7 +156,7 @@
 
 - ✅ `TMSimulator.is_halted()` method checks halting state
 - ✅ Halting occurs when:
-  - Generator raises `StopIteration` (normal halt)
+  - The machine enters `q_accept` (normal halt) or has no rule for its (state, symbol) (stuck)
   - Step count exceeds `MAX_STEPS` (safety halt)
 - ✅ Halting status displayed in GUI and CLI
 

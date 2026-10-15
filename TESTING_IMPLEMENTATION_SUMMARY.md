@@ -15,6 +15,7 @@ The missing **Testing** methodology step has been fully implemented. A comprehen
     ├── test_operation_correctness.py  # Operation correctness tests
     ├── test_edge_cases.py             # Edge case and boundary tests
     ├── test_integration.py            # Full workflow integration tests
+    ├── test_machines.py               # Transition tables checked against Python arithmetic
     ├── run_all_tests.py              # Test runner script
     └── README.md                      # Test documentation
 ```
