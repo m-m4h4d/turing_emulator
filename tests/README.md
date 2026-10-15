@@ -39,6 +39,12 @@ The test suite includes comprehensive tests for:
 - Tests tape consistency
 - Comprehensive end-to-end validation
 
+### 6. Machines (`test_machines.py`)
+- Checks every transition table against Python arithmetic over a range of inputs
+- Verifies each run halts in `q_accept` with only the result left on the tape
+- Checks binary results have no leading zeros and the head ends on the result
+- Checks every rule's next state exists and duplicate rules are rejected
+
 ## Running the Tests
 
 ### Run All Tests
@@ -62,6 +68,9 @@ python -m unittest tests.test_edge_cases
 
 # Integration tests
 python -m unittest tests.test_integration
+
+# Machine tests
+python -m unittest tests.test_machines
 ```
 
 ### Run with Verbose Output
